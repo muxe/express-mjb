@@ -1,0 +1,15 @@
+extends layout
+
+block content
+	.container
+		.row
+			.col-md-12
+				h1 Add Blob
+				//- .blob= blob
+				form(method='POST')
+					.form-group
+						input(name='key', placeholder="key")
+					.form-group
+						textarea(name='value', rows="50", cols="100", placeholder="value")
+					.form-group
+						input(type='submit', value='Submit')

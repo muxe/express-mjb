@@ -1,0 +1,5 @@
+node_modules
+*.log
+.grunt
+.DS_Store
+mongod.lock

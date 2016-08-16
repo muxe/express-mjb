@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	.container
+		.row
+			.col-md-12
+				h1 Edit Blob "#{key}"
+				//- .blob= blob
+				form(method='POST')
+					.form-group
+						textarea(name='value', rows="50", cols="100")= blob
+					.form-group
+						input(type='submit', value='Submit')
+				#jsoneditor(style="width: 400px; height: 400px;")
+				
+				script.
+					var container = document.getElementById("jsoneditor");
+					var options = {};
+					var editor = new JSONEditor(container, options);
+
+					// set json
+					var json = !{blob};
+					editor.set(json);
+
+					// get json
+					var json = editor.get();
