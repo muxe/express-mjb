@@ -1,6 +1,6 @@
 {
   "name": "express-mjb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Manage-JSON-Blobs with express and mongodb",
   "main": "index.js",
   "scripts": {
