@@ -6,13 +6,13 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     meta(name='description', content='')
     meta(name='author', content='')
-    link(href="#{baseUrl}/css/jsoneditor.min.css",rel="stylesheet",type="text/css")
-    script(src="#{baseUrl}/js/jsoneditor.min.js")
+    link(href=baseUrl+'/css/jsoneditor.min.css',rel="stylesheet",type="text/css")
+    script(src=baseUrl+"/js/jsoneditor.min.js")
     title MJB Admin
     block script
   body
     .header
-      a(href='#{baseUrl}') List
-      a(href='#{baseUrl}/add') Add
+      a(href=baseUrl) List
+      a(href=baseUrl+'/add') Add
     .content
       block content

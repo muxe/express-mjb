@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var jade = require('jade');
+var pug = require('pug');
 var bodyParser = require('body-parser');
 
 // module.exports = router;
@@ -8,11 +8,11 @@ module.exports = function(options) {
 	var Blob = require('./blobModel')(options);
 	var config = require('./blobConfig')(options);
 
-	var jadeOptions = {};
+	var pugOptions = {};
 
-	var jadeList = jade.compileFile(__dirname + '/views/list.jade', jadeOptions);
-	var jadeEdit = jade.compileFile(__dirname + '/views/edit.jade', jadeOptions);
-	var jadeAdd = jade.compileFile(__dirname + '/views/add.jade', jadeOptions);
+	var pugList = pug.compileFile(__dirname + '/views/list.pug', pugOptions);
+	var pugEdit = pug.compileFile(__dirname + '/views/edit.pug', pugOptions);
+	var pugAdd = pug.compileFile(__dirname + '/views/add.pug', pugOptions);
 
 	router.use(express.static(__dirname + '/static'));
 	router.use(bodyParser.json());
@@ -56,7 +56,7 @@ module.exports = function(options) {
 				});
 			}
 
-			return res.send(jadeList({
+			return res.send(pugList({
 				keys: keys,
 				baseUrl: config.baseUrl
 			}));
@@ -95,7 +95,7 @@ module.exports = function(options) {
 					err: 'Blob not found'
 				});
 			}
-			return res.send(jadeEdit({
+			return res.send(pugEdit({
 				blob: JSON.stringify(blob),
 				blobJson: blob,
 				key: key,
@@ -116,7 +116,7 @@ module.exports = function(options) {
 				});
 			}
 
-			return res.send(jadeEdit({
+			return res.send(pugEdit({
 				blob: JSON.stringify(stored),
 				blobJson: stored,
 				key: key,
@@ -126,7 +126,7 @@ module.exports = function(options) {
 	});
 
 	router.get('/add', function(req, res, next) {
-		return res.send(jadeAdd({
+		return res.send(pugAdd({
 			baseUrl: config.baseUrl
 		}));
 	});
@@ -142,7 +142,7 @@ module.exports = function(options) {
 					err: err
 				});
 			}
-			return res.send(jadeEdit({
+			return res.send(pugEdit({
 				blob: JSON.stringify(stored),
 				key: key,
 				baseUrl: config.baseUrl
